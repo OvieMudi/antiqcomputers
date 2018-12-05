@@ -1,0 +1,82 @@
+<% include ../partials/header%>
+
+        <main class="container">
+                <div class="row">
+                        <!--SIDE-BAR AND MAP-->
+                        <div class="col-md-4">
+                                <div class="list-group  mb-3">
+                                        <h1 class="display-4">Antique Computer</h1>
+                                  <a href="#" class="list-group-item list-group-item-action active">Dapibus ac facilisis in</a>
+                                  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                                  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                                </div>
+                        </div>
+                        
+                        <!--CAMPGROUND AND DISCRIPTION-->
+                        <div class="col-md-7">
+                                <figure class="figure card img-thumbnail">
+                                        <img class="img-fluid" src="<%=foundComputer.image%>">
+                                        <div class="card-body">
+                                                <div class="card-title">
+                                                        <h4 class="float-right">$6/day</h4>
+                                                        <h4><a href="#"><%=foundComputer.name%></h4></a>
+                                                </div>
+                                                <div class="card-text">
+                                                   <p><%=foundComputer.description%></p>
+                                                   <p>
+                                                        <em>Submitted by <strong><%=foundComputer.author.username%></strong></em>
+                                                   </p>
+                                                </div>
+                                                <!--show edit and delete buttons if user is authenticated and authorized--> 
+                                                <% if(currentUser && (foundComputer.author.id.equals(currentUser._id)||currentUser._id == adminID)){ %>
+                                                        <div> 
+                                                                <!--EDIT COMPUTER-->
+                                                            <a href="/computers/<%=foundComputer._id%>/edit" class="btn btn-info btn-sm"> Edit </a>
+                                                            <!--DELETE COMPUTER-->
+                                                            <form id="deleteButton" action="/computers/<%= foundComputer._id %>?_method=DELETE" method=POST>
+                                                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                <% } %>
+                                        </div>                                         
+
+                                </figure>
+                                
+                                <!--COMMENTS-->
+                                <div class="card bg-light">
+                                                
+                                        <!--new comment button-->
+                                        <div class="text-right mt-3">
+                                                <a class="btn btn-success" href="/computers/<%=foundComputer._id%>/comments/new">Add new comment</a>   
+                                        </div><hr>
+                                        <div class="row">
+                                                <div class="col-md-12">
+                                                        <% foundComputer.comments.forEach(function(comment){ %>
+                                                                <div class="card-body">
+                                                                     <strong><%= comment.author.username %></strong> 
+                                                                     <span class="float-right">10 days ago</span>
+                                                                    <p class="card-text">
+                                                                        <%= comment.text %>   
+                                                                    </p>  
+                                                                    <!--show edit and delete buttons on comments if user is authenticated and authorized--> 
+                                                                    <% if(currentUser && (comment.author.id.equals(currentUser._id)||currentUser._id == adminID)){ %>
+                                                                        <!--EDIT COMMENTS-->
+                                                                        <a href="/computers/<%=foundComputer._id%>/comments/<%=comment._id%>/edit" class="btn btn-info btn-xs"> Edit </a>
+                                                                        <!--DELETE COMMENT-->
+                                                                        <form id="deleteButton" action="/computers/<%= foundComputer._id %>/comments/<%=comment._id%>?_method=DELETE" method=POST>
+                                                                            <button class="btn btn-danger btn-xs">Delete</button>
+                                                                        </form>
+                                                                    <% } %>
+
+                                                                </div><hr>
+        
+                                                                
+                                                        <% }) %>    
+                                                </div>  
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </main>
+
+<% include ../partials/footer%>

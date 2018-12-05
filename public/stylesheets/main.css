@@ -1,0 +1,32 @@
+.btn.btn-info.btn-xs, .btn.btn-danger.btn-xs{
+  padding  : .25rem .4rem;
+  font-size  : .875rem;
+  line-height  : 1;
+  border-radius : .2rem;
+}
+
+html body {
+    background-color: #D5E0EB;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.figure.img-thumbnail {
+    padding: 0;
+}
+
+div.card-body {
+    padding: 0.5rem;
+}
+
+#deleteButton{
+    display: inline-block;
+}
+
+
+button a {
+    color: inherit;
+}

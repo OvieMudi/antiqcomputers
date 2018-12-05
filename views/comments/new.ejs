@@ -1,0 +1,19 @@
+<% include ../partials/header%>
+        <header class="container" style="text-align: center; margin: 20px auto;">
+            <h1>Add New Comment To <%= computer.name %> </h1> 
+        </header>
+       
+        <main class="container" style="width: 30%; margin: 0 auto;">
+            <form action="/computers/<%= computer._id %>/comments" method="POST">
+                <div class="form-group">
+                    <label for="text">Comment</label>
+                    <textarea name="comment[text]" class="form-control" id="text" placeholder="Enter comment..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit!</button>
+            </form>
+            <a href="/computers/<%= computer._id %>">Go back</a>
+        </main>
+
+       
+<% include ../partials/footer%>

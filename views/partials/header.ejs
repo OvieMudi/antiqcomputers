@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Antique Computer</title>
+        <link rel="stylesheet" href="/stylesheets/main.css" >
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+            integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" 
+            crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2px;">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/computers">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+              </li>
+            </ul>
+            
+            <ul class="navbar-nav">
+              <!--show login and signup links if user is not login-->
+              <% if(!currentUser){ %>
+                <li class="nav-item">
+                  <a class="nav-link mr-2" href="/login">Login</a>
+                </li>
+                <li class="nav-item mr-2">
+                  <a class="nav-link" href="/signup">Sign Up</a>
+                </li>
+                <!--show logout links if user is logged in-->
+              <% } else { %>
+                <li class="nav-item mr-2"><a class="nav-link" href="#"><%=currentUser.username%></a></li>
+                <li class="nav-item mr-2">
+                  <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+              <% } %>
+            </ul>
+          </div>
+        </nav>
+          <div class="container">
+            <% if(error && error.length > 0) { %>
+              <div class="alert alert-danger" role="alert">
+                <%=error%>
+              </div>
+            <% } %>
+            
+            <% if(success && success.length > 0) { %>
+              <div class="alert alert-success" role="alert">
+                 <%=success%>
+              </div>
+            <% } %>
+            
+          </div>
+        

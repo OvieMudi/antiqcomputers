@@ -1,0 +1,27 @@
+<% include ../partials/header%>
+        <header class="container" style="text-align: center; margin: 20px auto;">
+            <h1>Add New Computer</h1> 
+        </header>
+       
+        <main class="container" style="width: 30%; margin: 0 auto;">
+            <form action="/computers" method="POST">
+                <div class="form-group">
+                    <label for="compName">Name of computer</label>
+                    <input type="text" name="compName" class="form-control" id="compName" placeholder="Enter name..." required>
+                </div>
+                <div class="form-group">
+                    <label for="compURL">Link to image</label>
+                    <input type="text" name="compURL" class="form-control" id="compURL" placeholder="Enter url..." required>
+                </div>
+                <div class="form-group">
+                    <label for="compDesc">Enter a short description</label>
+                    <textarea name="compDesc" class="form-control" id="compDesc" required>This oldie still kick ass!</textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit!</button>
+            </form>
+            <a href="/computers/">Go back</a>
+        </main>
+
+       
+<% include ../partials/footer%>

@@ -1,0 +1,33 @@
+<% include ../partials/header%>
+    <header class="jumbotron container">
+        <div class="container">
+            <h1>The Antique Computer Gallery</h1>
+            <h3>Get knees deep into the World's largest collection of vintage computers!</h3>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-md">
+                <a href="/computers/new">Add A New Computer</a>
+            </button>
+        </div>
+    </header>
+    
+	<div class="container">
+	  <div class="row" style="display: flex; flex-wrap: wrap;">
+	     <% compModels.forEach(function(compModel) { %>
+    			<div class="col-md-3 col-sm-6">
+    				<figure class="figure img-thumbnail text-center">
+    					<img class="img-fluid" src="<%=compModel.image%>" alt="<%= compModel.name %>" >
+    					<figcation class="figure-caption">
+    					    <strong><%=compModel.name%></strong>
+    					</figcation>
+    					<p>
+    					    <a href="/computers/<%= compModel._id %>" class="btn btn-primary">More info</a>
+    					</p>
+    				</figure>
+    			</div>
+    	  <% }) %>
+               
+        </div>
+	</div>
+
+<% include ../partials/footer%>
