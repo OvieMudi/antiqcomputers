@@ -19,8 +19,8 @@ const express               = require("express"),
         commentRoutes       = require("./routes/comment");
     
 //Connect to the database
-mongoose.connect("mongodb://localhost:27017/antique_computer", {useNewUrlParser: true});
-
+// mongoose.connect("mongodb://localhost:27017/antique_computer", {useNewUrlParser: true});
+mongoose.connect('mongodb://demodev2:qwerty123@ds163842.mlab.com:63842/antiqcomputer');
 //Configure the app
 app.set("view engine", 'ejs'); //use ejs for redering the views folder
 app.use(bodyParser.urlencoded({extended: true}));
